@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <group android:checkableBehavior="single">
+            <item android:title="Ciclo Academico">
+                <menu>
+                    <item
+                        android:id="@+id/nav_home"
+                        android:title="Home temporal"
+                        android:icon="@drawable/telefono"/>
+                    <item
+                        android:id="@+id/nav_horario"
+                        android:title="Horario"
+                        android:icon="@drawable/lista"/>
+
+                    <item
+                        android:id="@+id/nav_cursos"
+                        android:title="Cursos"
+                        android:icon="@drawable/libros"/>
+                    <item
+                        android:id="@+id/nav_cuotas"
+                        android:title="Cuotas Academicas"
+                        android:icon="@drawable/cuotas"/>
+
+                </menu>
+            </item>
+        </group>
+
+        <group android:checkableBehavior="single">
+            <item android:title="Universidad">
+                <menu>
+                    <item
+                        android:id="@+id/nav_noticias"
+                        android:title="Noticias y Agenda PUCP"
+                        android:icon="@drawable/noticias"/>
+
+                    <item
+                        android:id="@+id/nav_cafeteria"
+                        android:title="Cafeteria"
+                        android:icon="@drawable/comida"/>
+
+                    <item
+                        android:id="@+id/nav_biblioteca"
+                        android:title="Biblioteca"
+                        android:icon="@drawable/biblioteca"/>
+                    <item
+                        android:id="@+id/nav_cubiculos"
+                        android:title="Reserva Cubiculos"
+                        android:icon="@drawable/cubiculo"/>
+                    <item
+                        android:id="@+id/nav_aulasest"
+                        android:title="Aulas de Estudio"
+                        android:icon="@drawable/aulas"/>
+                    <item
+                        android:id="@+id/nav_aulasinf"
+                        android:title="Aulas Informaticas"
+                        android:icon="@drawable/computadora"/>
+                </menu>
+            </item>
+        </group>
+
+        <group android:checkableBehavior="single">
+            <item android:title="Perfil">
+                <menu>
+                    <item
+                        android:id="@+id/nav_perfil"
+                        android:title="Mi Perfil"
+                        android:icon="@drawable/ic_baseline_tag_faces_24"/>
+
+                    <item
+                        android:id="@+id/nav_logout"
+                        android:title="Cerrar Sesion"
+                        android:icon="@drawable/logout"/>
+                </menu>
+
+            </item>
+
+        </group>
+
+
+</menu>

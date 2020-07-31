@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProyectoIndividualApps</string>
+    <string name="navigation_drawer_open">Abrir Navigation Drawer</string>
+    <string name="navigation_drawer_close">Cerrar Navigation Drawer</string>
+</resources>
