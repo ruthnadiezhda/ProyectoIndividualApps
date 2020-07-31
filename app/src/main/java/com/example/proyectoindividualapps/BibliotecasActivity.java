@@ -151,10 +151,10 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                         librosBiblioteca.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                Log.d("LLego ", "Adentro de atributo escogido");
+                                Log.d("LLego ", "Debe listar todos los libros");
                                 for(DataSnapshot keyId: dataSnapshot.getChildren()){
-                                    Log.d("Pruebax ", keyId.getValue().toString());
-                                    if((keyId.child(atributoEscogido).getValue(String.class).equals(buscador.toString()))){
+                                    Log.d("Pruebax ", keyId.child(atributoEscogido).getValue().toString());
+                                    if((keyId.child(atributoEscogido).getValue().toString()).equals(buscador.getText().toString())){
                                         Libro libro = new Libro();
                                         libro.setAutor(keyId.child("Autor").getValue(String.class));
                                         libro.setPrestados(keyId.child("Prestados").getValue(Integer.class));

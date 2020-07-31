@@ -74,7 +74,7 @@ public class LibrosAdapter extends RecyclerView.Adapter<LibrosAdapter.LibrosView
 
         public void asignarDatos(Libro libro) {
             textView1.setText(libro.getNombre());
-            textView2.setText(libro.getDisponibles());
+            //textView2.setText(libro.getDisponibles().toString());
             textView3.setText(libro.getArea());
         }
 
