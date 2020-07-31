@@ -127,36 +127,34 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
 
 
         //Obtengo las referencia a la biblioteca
-        final DatabaseReference biblioteca = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Bibliotecas");
-        Log.d("Prueba","Escogio biblioteca FB"+ biblioteca);
+        final DatabaseReference biblioteca = FirebaseDatabase.getInstance().getReference().child("Universidad");
+        Log.d("Prueba","Escogio biblioteca FB "+ biblioteca);
 
         //Creo el arraylist de libros
         final ArrayList<Libro> listaLibrosCoincidentes = new ArrayList<>();
 
+        Log.d("A ver: ", biblioteca.child("Bibliotecas").equalTo(bibliotecaEscogida).toString());
+
         //Empiezo a buscar a que biblioteca pertenece
-        biblioteca.addListenerForSingleValueEvent(new ValueEventListener() {
+        biblioteca.orderByChild("Bibliotecas").equalTo(bibliotecaEscogida).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshotBiblioteca) {
-            Log.d("Prueba","hola");
-                for (DataSnapshot keyId : dataSnapshotBiblioteca.getChildren()){
-                    Log.d("Key", keyId.toString());
+
                     Log.d("b",bibliotecaEscogida);
-                    if (keyId.toString().equals(bibliotecaEscogida)){
-
-                        Log.d("Prueba","Llego adentro de biblioteca");
+                        Log.d("Prueba ","Llego adentro de biblioteca");
                         //Obtengo los libros y revistas
-                        final DatabaseReference librosBiblioteca = biblioteca.child("Libros");;
+                        final DatabaseReference librosBiblioteca = biblioteca.child("Bibliotecas").child(bibliotecaEscogida).child("Libros");
 
-                        Log.d("Prueba","Escogio"+ librosBiblioteca);
+                        Log.d("Prueba ","Escogio "+ librosBiblioteca);
 
                         //Busco en libros
                         librosBiblioteca.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                                Log.d("LLego ", "Adentro de atributo escogido");
                                 for(DataSnapshot keyId: dataSnapshot.getChildren()){
-
-                                    if((keyId.child(atributoEscogido).getValue(String.class).equals(buscador))){
+                                    Log.d("Pruebax ", keyId.getValue().toString());
+                                    if((keyId.child(atributoEscogido).getValue(String.class).equals(buscador.toString()))){
                                         Libro libro = new Libro();
                                         libro.setAutor(keyId.child("Autor").getValue(String.class));
                                         libro.setPrestados(keyId.child("Prestados").getValue(Integer.class));
@@ -191,10 +189,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                             }
                         });
 
-                    }
                 }
-
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseErrorBiblioteca) {
