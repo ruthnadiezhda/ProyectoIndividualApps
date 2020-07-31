@@ -82,24 +82,11 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
 
         recyclerView = findViewById(R.id.recyclerViewBiblioteca);
 
-        botonBuscarLibro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buscarLibros();
-                Log.d("Prueba","Entra a void");
-            }
-        });
-
-    }
-
-
-    public void buscarLibros(){
-
-        //Primero obtengo lo que escogio en el spinner de Biblioteca
+        //Spinner escucando
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                bibliotecaEscogida =spinner.getSelectedItem().toString();
+                bibliotecaEscogida =spinner.getSelectedItem().toString(); //Linea para obtener el valor
                 Log.d("Prueba","Escogio biblioteca" + bibliotecaEscogida);
             }
 
@@ -108,7 +95,6 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
             }
         });
 
-        //Luego obtengo en el spinner atributo
         spinnerAtributo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -122,6 +108,24 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
             }
         });
 
+        botonBuscarLibro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buscarLibros();
+                Log.d("Prueba","Entra a void");
+            }
+        });
+
+    }
+
+
+    public void buscarLibros(){
+
+        //Valores spinners
+        bibliotecaEscogida =spinner.getSelectedItem().toString();
+        atributoEscogido = spinnerAtributo.getSelectedItem().toString();
+
+
         //Obtengo las referencia a la biblioteca
         final DatabaseReference biblioteca = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Bibliotecas");
         Log.d("Prueba","Escogio biblioteca FB"+ biblioteca);
@@ -130,11 +134,13 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
         final ArrayList<Libro> listaLibrosCoincidentes = new ArrayList<>();
 
         //Empiezo a buscar a que biblioteca pertenece
-        biblioteca.addValueEventListener(new ValueEventListener() {
+        biblioteca.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshotBiblioteca) {
-
+            Log.d("Prueba","hola");
                 for (DataSnapshot keyId : dataSnapshotBiblioteca.getChildren()){
+                    Log.d("Key", keyId.toString());
+                    Log.d("b",bibliotecaEscogida);
                     if (keyId.toString().equals(bibliotecaEscogida)){
 
                         Log.d("Prueba","Llego adentro de biblioteca");
