@@ -78,6 +78,9 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
         spinnerAtributo = findViewById(R.id.spinnerAtributos);
         spinnerAtributo.setAdapter(adapter2);
         buscador = findViewById(R.id.buscadorBiblioteca);
+        if (buscador.getText().toString().isEmpty()) {
+            buscador.setError("No deb estar vacio");
+        }
         botonBuscarLibro = findViewById(R.id.buscarBoton);
 
         recyclerView = findViewById(R.id.recyclerViewBiblioteca);
@@ -153,7 +156,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Log.d("LLego ", "Debe listar todos los libros");
                                 for(DataSnapshot keyId: dataSnapshot.getChildren()){
-                                    Log.d("Pruebax ", keyId.child(atributoEscogido).getValue().toString());
+
                                     if((keyId.child(atributoEscogido).getValue().toString()).equals(buscador.getText().toString())){
                                         Libro libro = new Libro();
                                         libro.setAutor(keyId.child("Autor").getValue(String.class));
@@ -176,9 +179,10 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                                     @Override
                                     public void reservarClick(int position) {
                                         listaLibrosCoincidentes.get(position).botonReservar(listaLibrosCoincidentes.get(position));
+                                        String libroAReservar = listaLibrosCoincidentes.get(position).getNombre();
                                         librosAdapter.notifyItemChanged(position);
-                                        librosBiblioteca.child("Prestados").setValue(listaLibrosCoincidentes.get(position).getPrestados());
-                                        librosBiblioteca.child("Disponibles").setValue(listaLibrosCoincidentes.get(position).getDisponibles());
+                                        librosBiblioteca.child(libroAReservar).child("Prestados").setValue(listaLibrosCoincidentes.get(position).getPrestados());
+                                        librosBiblioteca.child(libroAReservar).child("Disponibles").setValue(listaLibrosCoincidentes.get(position).getDisponibles());
 
                                     }
                                 });
