@@ -3,12 +3,15 @@ package com.example.proyectoindividualapps;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proyectoindividualapps.entity.Menu;
 import com.google.android.material.navigation.NavigationView;
@@ -137,6 +141,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeAlmuerzitoA.getCantidad() - 1;
                                     menucitoDeAlmuerzitoA.setCantidad(menusActuales);
                                     cafeteriaArtes.child("Almuerzo").child("Cantidad").setValue(menusActuales);
@@ -156,6 +161,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeCenitaA.getCantidad() - 1;
                                     menucitoDeCenitaA.setCantidad(menusActuales);
                                     cafeteriaArtes.child("Cena").child("Cantidad").setValue(menusActuales);
@@ -196,6 +202,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarAlmuerzoCentral.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeAlmuerzitoC.getCantidad() - 1;
                                     menucitoDeAlmuerzitoC.setCantidad(menusActuales);
                                     cafeteriaCentral.child("Almuerzo").child("Cantidad").setValue(menusActuales);
@@ -215,6 +222,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarCenaCentral.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeCenitaC.getCantidad() - 1;
                                     menucitoDeCenitaC.setCantidad(menusActuales);
                                     cafeteriaCentral.child("Cena").child("Cantidad").setValue(menusActuales);
@@ -252,6 +260,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarAlmuerzoLetras.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeAlmuerzitoL.getCantidad() - 1;
                                     menucitoDeAlmuerzitoL.setCantidad(menusActuales);
                                     cafeteriaLetras.child("Almuerzo").child("Cantidad").setValue(menusActuales);
@@ -271,6 +280,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                             reservarCenaLetras.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    desplegarMedioDePago();
                                     Integer menusActuales = menucitoDeCenitaL.getCantidad() - 1;
                                     menucitoDeCenitaL.setCantidad(menusActuales);
                                     cafeteriaLetras.child("Cena").child("Cantidad").setValue(menusActuales);
@@ -332,7 +342,30 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-
+    public void desplegarMedioDePago(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Escoga su medio de pago:");
+        alertDialog.setMessage("Si escoge Caja debe acercarse en un plazo maximo de media hora, sino su plato sera quitado de su cuenta como reservado. Si elige tarjeta, sera redirigido a una pagina para realizar el pago");
+        alertDialog.setPositiveButton("Caja",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(CafeteriasActivity.this, "Tiene media hora para ir a pagar a caja", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        alertDialog.setNegativeButton("Tarjeta",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String url = "https://www.pucp.edu.pe/";
+                        Uri uri =Uri.parse(url);
+                        Intent i = new Intent(Intent.ACTION_VIEW,uri);
+                        startActivity(i);
+                    }
+                });
+        alertDialog.show();
+    }
 
 
 
