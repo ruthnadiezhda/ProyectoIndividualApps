@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.proyectoindividualapps.adapter.LibrosAdapter;
 import com.example.proyectoindividualapps.entity.Libro;
@@ -37,6 +38,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    TextView comentarioReserva;
     LibrosAdapter librosAdapter;
     private Spinner spinner;
     private Spinner spinnerAtributo;
@@ -77,6 +79,10 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                 android.R.layout.simple_spinner_dropdown_item,lista2);
         spinnerAtributo = findViewById(R.id.spinnerAtributos);
         spinnerAtributo.setAdapter(adapter2);
+
+        comentarioReserva = findViewById(R.id.comentarioReserva);
+        comentarioReserva.setVisibility(View.GONE);
+
         buscador = findViewById(R.id.buscadorBiblioteca);
         if (buscador.getText().toString().isEmpty()) {
             buscador.setError("No deb estar vacio");
@@ -178,6 +184,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                                 librosAdapter.setOnItemClickListener(new LibrosAdapter.OnItemClickListener() {
                                     @Override
                                     public void reservarClick(int position) {
+                                        comentarioReserva.setVisibility(View.VISIBLE);
                                         listaLibrosCoincidentes.get(position).botonReservar(listaLibrosCoincidentes.get(position));
                                         String libroAReservar = listaLibrosCoincidentes.get(position).getNombre();
                                         librosAdapter.notifyItemChanged(position);

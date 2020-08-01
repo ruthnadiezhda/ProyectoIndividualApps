@@ -19,6 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/comentarioReserva"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="Tiene media hora para recoger su reserva. Evitemos la aglomeración."
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buscarBoton" />
+
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"
@@ -100,11 +113,11 @@
             android:id="@+id/recyclerViewBiblioteca"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buscarBoton" />
+            app:layout_constraintTop_toBottomOf="@+id/comentarioReserva" />
 
         <Spinner
             android:id="@+id/spinnerAtributos"
