@@ -97,25 +97,26 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         final DatabaseReference cafeteriaCentral = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Cafeteria").child("Central");
         final DatabaseReference cafeteriaLetras = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Cafeteria").child("Letras");
 
+        Log.d("A", cafeteriaArtes.toString());
         cafeteriaArtes.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
-
-                    if (keyID.getValue().toString().equals("Almuerzo")){
+                        Log.d("Almuerzo: ", keyID.toString());
+                    if (keyID.getKey().equals("Almuerzo")){
                         Menu menucitoDeAlmuerzitoA = new Menu();
-                        menucitoDeAlmuerzitoA.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
-                        Log.d("Prueba 2:", menucitoDeAlmuerzitoA.getCantidad().toString());
-                        menucitoDeAlmuerzitoA.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
-                        Log.d("Prueba 3: ", menucitoDeAlmuerzitoA.getNombre());
+
+                        menucitoDeAlmuerzitoA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeAlmuerzitoA.setNombre(keyID.child("Nombre").getValue(String.class));
+
                         nombreAlmuerzoArtes.setText(menucitoDeAlmuerzitoA.getNombre());
                         cantidadAlmuerzoArtes.setText(Integer.toString(menucitoDeAlmuerzitoA.getCantidad()));
 
-                    } else if (keyID.getValue().toString().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena")){
                         Menu menucitoDeCenitaA = new Menu();
-                        menucitoDeCenitaA.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
-                        menucitoDeCenitaA.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        menucitoDeCenitaA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaA.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaArtes.setText(menucitoDeCenitaA.getNombre());
                         cantidadCenaArtes.setText(Integer.toString(menucitoDeCenitaA.getCantidad()));
                     } else {
@@ -152,17 +153,17 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
 
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
-                    if (keyID.getValue().toString().equals("Almuerzo")){
+                    if (keyID.getKey().equals("Almuerzo")){
                         Menu menucitoDeAlmuerzitoC = new Menu();
-                        menucitoDeAlmuerzitoC.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
-                        menucitoDeAlmuerzitoC.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
+                        menucitoDeAlmuerzitoC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeAlmuerzitoC.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoCentral.setText(menucitoDeAlmuerzitoC.getNombre());
                         cantidadAlmuerzoCentral.setText(Integer.toString(menucitoDeAlmuerzitoC.getCantidad()));
 
-                    } else if (keyID.getValue().toString().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena")){
                         Menu menucitoDeCenitaC = new Menu();
-                        menucitoDeCenitaC.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
-                        menucitoDeCenitaC.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        menucitoDeCenitaC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaC.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaCentral.setText(menucitoDeCenitaC.getNombre());
                         cantidadCenaCentral.setText(Integer.toString(menucitoDeCenitaC.getCantidad()));
                     } else {
@@ -182,17 +183,17 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
-                    if (keyID.getValue().toString().equals("Almuerzo")){
+                    if (keyID.getKey().equals("Almuerzo")){
                         Menu menucitoDeAlmuerzitoL = new Menu();
-                        menucitoDeAlmuerzitoL.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
-                        menucitoDeAlmuerzitoL.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
+                        menucitoDeAlmuerzitoL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeAlmuerzitoL.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoLetras.setText(menucitoDeAlmuerzitoL.getNombre());
                         cantidadAlmuerzoLetras.setText(Integer.toString(menucitoDeAlmuerzitoL.getCantidad()));
 
-                    } else if (keyID.getValue().toString().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena")){
                         Menu menucitoDeCenitaL = new Menu();
-                        menucitoDeCenitaL.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
-                        menucitoDeCenitaL.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        menucitoDeCenitaL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaL.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaLetras.setText(menucitoDeCenitaL.getNombre());
                         cantidadCenaLetras.setText(Integer.toString(menucitoDeCenitaL.getCantidad()));
                     } else {

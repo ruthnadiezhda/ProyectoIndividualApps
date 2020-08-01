@@ -120,7 +120,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadAlmuerzoArtes"
@@ -131,7 +131,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarArtesAlmuerzo"
@@ -202,7 +202,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadAlmuerzoCentral"
@@ -213,7 +213,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarCentralAlmuerzo"
@@ -284,7 +284,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadAlmuerzoLetras"
@@ -295,7 +295,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarLetrasAlmuerzo"
@@ -367,7 +367,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadCenaArtes"
@@ -378,7 +378,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarArtesCena"
@@ -449,7 +449,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadCenaCentral"
@@ -460,7 +460,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarCentralCena"
@@ -531,7 +531,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <TextView
                             android:id="@+id/cantidadCenaLetras"
@@ -542,7 +542,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/baloo"
-                            android:text="TextView" />
+                            android:text="No disponible" />
 
                         <Button
                             android:id="@+id/reservarLetrasCena"
