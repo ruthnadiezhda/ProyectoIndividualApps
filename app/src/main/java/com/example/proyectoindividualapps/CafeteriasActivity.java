@@ -9,10 +9,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.proyectoindividualapps.entity.Menu;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CafeteriasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -20,6 +30,24 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    private TextView nombreAlmuerzoArtes;
+    private TextView nombreCenaArtes;
+    private TextView nombreAlmuerzoCentral;
+    private TextView nombreCenaCentral;
+    private TextView nombreAlmuerzoLetras;
+    private TextView nombreCenaLetras;
+    private TextView cantidadAlmuerzoArtes;
+    private TextView cantidadCenaArtes;
+    private TextView cantidadAlmuerzoCentral;
+    private TextView cantidadCenaCentral;
+    private TextView cantidadAlmuerzoLetras;
+    private TextView cantidadCenaLetras;
+    private Button reservarAlmuerzoArtes;
+    private Button reservarCenaArtes;
+    private Button reservarAlmuerzoCentral;
+    private Button reservarCenaCentral;
+    private Button reservarAlmuerzoLetras;
+    private Button reservarCenaLetras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +68,147 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_cafeteria);
+
+        nombreAlmuerzoArtes = findViewById(R.id.nombreAlmuerzoArtes);
+        nombreCenaArtes = findViewById(R.id.nombreCenaArtes);
+        nombreAlmuerzoCentral = findViewById(R.id.nombreAlmuerzoCentral);
+        nombreCenaCentral = findViewById(R.id.nombreCenaCentral);
+        nombreAlmuerzoLetras = findViewById(R.id.nombreAlmuerzoLetras);
+        nombreCenaLetras = findViewById(R.id.nombreCenaLetras);
+
+
+        cantidadAlmuerzoArtes = findViewById(R.id.cantidadAlmuerzoArtes);
+        cantidadCenaArtes = findViewById(R.id.cantidadCenaArtes);
+        cantidadAlmuerzoCentral = findViewById(R.id.cantidadAlmuerzoCentral);
+        cantidadCenaCentral = findViewById(R.id.cantidadCenaCentral);
+        cantidadAlmuerzoLetras = findViewById(R.id.cantidadAlmuerzoLetras);
+        cantidadCenaLetras = findViewById(R.id.cantidadCenaLetras);
+
+        reservarAlmuerzoArtes = findViewById(R.id.reservarArtesAlmuerzo);
+        reservarAlmuerzoCentral = findViewById(R.id.reservarCentralAlmuerzo);
+        reservarAlmuerzoLetras = findViewById(R.id.reservarLetrasAlmuerzo);
+        reservarCenaArtes = findViewById(R.id.reservarArtesCena);
+        reservarCenaCentral = findViewById(R.id.reservarCentralCena);
+        reservarCenaLetras = findViewById(R.id.reservarLetrasCena);
+
+
+        //Referencia a la incidencia
+        final DatabaseReference cafeteriaArtes = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Cafeteria").child("Artes");
+        final DatabaseReference cafeteriaCentral = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Cafeteria").child("Central");
+        final DatabaseReference cafeteriaLetras = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Cafeteria").child("Letras");
+
+        cafeteriaArtes.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot keyID : dataSnapshot.getChildren()){
+
+                    if (keyID.getValue().toString().equals("Almuerzo")){
+                        Menu menucitoDeAlmuerzitoA = new Menu();
+                        menucitoDeAlmuerzitoA.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
+                        Log.d("Prueba 2:", menucitoDeAlmuerzitoA.getCantidad().toString());
+                        menucitoDeAlmuerzitoA.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
+                        Log.d("Prueba 3: ", menucitoDeAlmuerzitoA.getNombre());
+                        nombreAlmuerzoArtes.setText(menucitoDeAlmuerzitoA.getNombre());
+                        cantidadAlmuerzoArtes.setText(Integer.toString(menucitoDeAlmuerzitoA.getCantidad()));
+
+                    } else if (keyID.getValue().toString().equals("Cena")){
+                        Menu menucitoDeCenitaA = new Menu();
+                        menucitoDeCenitaA.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaA.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        nombreCenaArtes.setText(menucitoDeCenitaA.getNombre());
+                        cantidadCenaArtes.setText(Integer.toString(menucitoDeCenitaA.getCantidad()));
+                    } else {
+                        Log.d("Nada 4", "Nadita en Artes");
+                    }
+                }
+
+                reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+
+                reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+            }
+        });
+
+        cafeteriaCentral.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot keyID : dataSnapshot.getChildren()){
+
+                    if (keyID.getValue().toString().equals("Almuerzo")){
+                        Menu menucitoDeAlmuerzitoC = new Menu();
+                        menucitoDeAlmuerzitoC.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
+                        menucitoDeAlmuerzitoC.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
+                        nombreAlmuerzoCentral.setText(menucitoDeAlmuerzitoC.getNombre());
+                        cantidadAlmuerzoCentral.setText(Integer.toString(menucitoDeAlmuerzitoC.getCantidad()));
+
+                    } else if (keyID.getValue().toString().equals("Cena")){
+                        Menu menucitoDeCenitaC = new Menu();
+                        menucitoDeCenitaC.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaC.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        nombreCenaCentral.setText(menucitoDeCenitaC.getNombre());
+                        cantidadCenaCentral.setText(Integer.toString(menucitoDeCenitaC.getCantidad()));
+                    } else {
+                        Log.d("Nada 5", "Nadita en Central");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        cafeteriaLetras.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot keyID : dataSnapshot.getChildren()){
+
+                    if (keyID.getValue().toString().equals("Almuerzo")){
+                        Menu menucitoDeAlmuerzitoL = new Menu();
+                        menucitoDeAlmuerzitoL.setCantidad(keyID.child("Almuerzo").child("Cantidad").getValue(Integer.class));
+                        menucitoDeAlmuerzitoL.setNombre(keyID.child("Almuerzo").child("Nombre").getValue(String.class));
+                        nombreAlmuerzoLetras.setText(menucitoDeAlmuerzitoL.getNombre());
+                        cantidadAlmuerzoLetras.setText(Integer.toString(menucitoDeAlmuerzitoL.getCantidad()));
+
+                    } else if (keyID.getValue().toString().equals("Cena")){
+                        Menu menucitoDeCenitaL = new Menu();
+                        menucitoDeCenitaL.setCantidad(keyID.child("Cena").child("Cantidad").getValue(Integer.class));
+                        menucitoDeCenitaL.setNombre(keyID.child("Cena").child("Nombre").getValue(String.class));
+                        nombreCenaLetras.setText(menucitoDeCenitaL.getNombre());
+                        cantidadCenaLetras.setText(Integer.toString(menucitoDeCenitaL.getCantidad()));
+                    } else {
+                        Log.d("Nada 6", "Nadita en Letras");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
     }
 
     @Override
