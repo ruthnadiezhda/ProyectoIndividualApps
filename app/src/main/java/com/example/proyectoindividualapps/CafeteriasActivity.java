@@ -104,7 +104,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
 
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
                         Log.d("Almuerzo: ", keyID.toString());
-                    if (keyID.getKey().equals("Almuerzo")){
+                    if (keyID.getKey().equals("Almuerzo") && (keyID.toString()!= null)){
                         Menu menucitoDeAlmuerzitoA = new Menu();
 
                         menucitoDeAlmuerzitoA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
@@ -113,7 +113,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         nombreAlmuerzoArtes.setText(menucitoDeAlmuerzitoA.getNombre());
                         cantidadAlmuerzoArtes.setText(Integer.toString(menucitoDeAlmuerzitoA.getCantidad()));
 
-                    } else if (keyID.getKey().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
                         Menu menucitoDeCenitaA = new Menu();
                         menucitoDeCenitaA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaA.setNombre(keyID.child("Nombre").getValue(String.class));
@@ -153,14 +153,14 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
 
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
-                    if (keyID.getKey().equals("Almuerzo")){
+                    if (keyID.getKey().equals("Almuerzo") && (keyID.toString()!= null)){
                         Menu menucitoDeAlmuerzitoC = new Menu();
                         menucitoDeAlmuerzitoC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeAlmuerzitoC.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoCentral.setText(menucitoDeAlmuerzitoC.getNombre());
                         cantidadAlmuerzoCentral.setText(Integer.toString(menucitoDeAlmuerzitoC.getCantidad()));
 
-                    } else if (keyID.getKey().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
                         Menu menucitoDeCenitaC = new Menu();
                         menucitoDeCenitaC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaC.setNombre(keyID.child("Nombre").getValue(String.class));
@@ -183,14 +183,14 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
-                    if (keyID.getKey().equals("Almuerzo")){
+                    if ((keyID.getKey().equals("Almuerzo")) && (keyID.toString()!= null)){
                         Menu menucitoDeAlmuerzitoL = new Menu();
                         menucitoDeAlmuerzitoL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeAlmuerzitoL.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoLetras.setText(menucitoDeAlmuerzitoL.getNombre());
                         cantidadAlmuerzoLetras.setText(Integer.toString(menucitoDeAlmuerzitoL.getCantidad()));
 
-                    } else if (keyID.getKey().equals("Cena")){
+                    } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
                         Menu menucitoDeCenitaL = new Menu();
                         menucitoDeCenitaL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaL.setNombre(keyID.child("Nombre").getValue(String.class));
