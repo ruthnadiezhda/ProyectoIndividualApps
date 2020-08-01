@@ -1,6 +1,7 @@
 package com.example.proyectoindividualapps;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -101,7 +104,10 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         reservarCenaLetras.setVisibility(View.GONE);
 
         final Calendar calendario = new GregorianCalendar();
-        Integer horaparaReservarCena = calendario.get(Calendar.HOUR_OF_DAY);
+        final Integer horaparaReservarCena = calendario.get(Calendar.HOUR_OF_DAY);
+        Log.d("A ver: ", horaparaReservarCena.toString());
+
+
 
 
         //Referencia a la incidencia
@@ -111,13 +117,14 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
 
         Log.d("A", cafeteriaArtes.toString());
         cafeteriaArtes.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot keyID : dataSnapshot.getChildren()){
-                        Log.d("Almuerzo: ", keyID.toString());
-                    if (keyID.getKey().equals("Almuerzo") && (keyID.toString()!= null)){
-                        Menu menucitoDeAlmuerzitoA = new Menu();
+                for (final DataSnapshot keyID : dataSnapshot.getChildren()) {
+                    Log.d("Almuerzo: ", keyID.toString());
+                    if (keyID.getKey().equals("Almuerzo") && (keyID.toString() != null)) {
+                        final Menu menucitoDeAlmuerzitoA = new Menu();
 
                         menucitoDeAlmuerzitoA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeAlmuerzitoA.setNombre(keyID.child("Nombre").getValue(String.class));
@@ -125,37 +132,42 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         nombreAlmuerzoArtes.setText(menucitoDeAlmuerzitoA.getNombre());
                         cantidadAlmuerzoArtes.setText(Integer.toString(menucitoDeAlmuerzitoA.getCantidad()));
 
-                    } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
-                        Menu menucitoDeCenitaA = new Menu();
+                        if (horaparaReservarCena>=9 && horaparaReservarCena<=15) {
+                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeAlmuerzitoA.getCantidad() - 1;
+                                    menucitoDeAlmuerzitoA.setCantidad(menusActuales);
+                                    cafeteriaArtes.child("Almuerzo").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+                        }
+
+                    } else if (keyID.getKey().equals("Cena") && (keyID.toString() != null)) {
+                        final Menu menucitoDeCenitaA = new Menu();
                         menucitoDeCenitaA.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaA.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaArtes.setText(menucitoDeCenitaA.getNombre());
                         cantidadCenaArtes.setText(Integer.toString(menucitoDeCenitaA.getCantidad()));
+
+                        if (horaparaReservarCena>=18 && horaparaReservarCena<=21) {
+                            reservarCenaArtes.setVisibility(View.VISIBLE);
+                            reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeCenitaA.getCantidad() - 1;
+                                    menucitoDeCenitaA.setCantidad(menusActuales);
+                                    cafeteriaArtes.child("Cena").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+
+                        }
                     } else {
                         Log.d("Nada 4", "Nadita en Artes");
                     }
                 }
 
-                if (calendario.after(9) && (calendario.before(15))){
-                    reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
-                    reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-                } else if (calendario.after(18) && calendario.before(21)){
-                    reservarCenaArtes.setVisibility(View.VISIBLE);
-                    reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
-                } else {
-                    Log.d("Dejando mensajes","Jugando con horas par reservas");
-                }
             }
 
             @Override
@@ -172,43 +184,49 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
                     if (keyID.getKey().equals("Almuerzo") && (keyID.toString()!= null)){
-                        Menu menucitoDeAlmuerzitoC = new Menu();
+                        final Menu menucitoDeAlmuerzitoC = new Menu();
                         menucitoDeAlmuerzitoC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeAlmuerzitoC.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoCentral.setText(menucitoDeAlmuerzitoC.getNombre());
                         cantidadAlmuerzoCentral.setText(Integer.toString(menucitoDeAlmuerzitoC.getCantidad()));
 
+
+                        if (horaparaReservarCena>=9 && horaparaReservarCena<=15) {
+                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeAlmuerzitoC.getCantidad() - 1;
+                                    menucitoDeAlmuerzitoC.setCantidad(menusActuales);
+                                    cafeteriaCentral.child("Almuerzo").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+                        }
+
                     } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
-                        Menu menucitoDeCenitaC = new Menu();
+                        final Menu menucitoDeCenitaC = new Menu();
                         menucitoDeCenitaC.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaC.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaCentral.setText(menucitoDeCenitaC.getNombre());
                         cantidadCenaCentral.setText(Integer.toString(menucitoDeCenitaC.getCantidad()));
+
+                        if (horaparaReservarCena>=18 && horaparaReservarCena<=21) {
+                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeCenitaC.getCantidad() - 1;
+                                    menucitoDeCenitaC.setCantidad(menusActuales);
+                                    cafeteriaCentral.child("Cena").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+                        }
+
                     } else {
                         Log.d("Nada 5", "Nadita en Central");
                     }
                 }
 
-                if (calendario.after(9) && (calendario.before(15))){
-                    reservarAlmuerzoCentral.setVisibility(View.VISIBLE);
-                    reservarAlmuerzoCentral.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-                } else if (calendario.after(18) && calendario.before(21)){
-                    reservarCenaCentral.setVisibility(View.VISIBLE);
-                    reservarCenaCentral.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
-                } else {
-                    Log.d("Dejando mensajes","Jugando con horas par reservas");
-                }
             }
 
             @Override
@@ -223,43 +241,48 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                 for (DataSnapshot keyID : dataSnapshot.getChildren()){
 
                     if ((keyID.getKey().equals("Almuerzo")) && (keyID.toString()!= null)){
-                        Menu menucitoDeAlmuerzitoL = new Menu();
+                        final Menu menucitoDeAlmuerzitoL = new Menu();
                         menucitoDeAlmuerzitoL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeAlmuerzitoL.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreAlmuerzoLetras.setText(menucitoDeAlmuerzitoL.getNombre());
                         cantidadAlmuerzoLetras.setText(Integer.toString(menucitoDeAlmuerzitoL.getCantidad()));
 
+                        if (horaparaReservarCena>=9 && horaparaReservarCena<=15) {
+                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeAlmuerzitoL.getCantidad() - 1;
+                                    menucitoDeAlmuerzitoL.setCantidad(menusActuales);
+                                    cafeteriaLetras.child("Almuerzo").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+                        }
+
                     } else if (keyID.getKey().equals("Cena") && (keyID.toString()!= null)){
-                        Menu menucitoDeCenitaL = new Menu();
+                        final Menu menucitoDeCenitaL = new Menu();
                         menucitoDeCenitaL.setCantidad(keyID.child("Cantidad").getValue(Integer.class));
                         menucitoDeCenitaL.setNombre(keyID.child("Nombre").getValue(String.class));
                         nombreCenaLetras.setText(menucitoDeCenitaL.getNombre());
                         cantidadCenaLetras.setText(Integer.toString(menucitoDeCenitaL.getCantidad()));
+
+                        if (horaparaReservarCena>=18 && horaparaReservarCena<=21) {
+                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer menusActuales = menucitoDeCenitaL.getCantidad() - 1;
+                                    menucitoDeCenitaL.setCantidad(menusActuales);
+                                    cafeteriaLetras.child("Cena").child("Cantidad").setValue(menusActuales);
+                                }
+                            });
+                        }
+
                     } else {
                         Log.d("Nada 6", "Nadita en Letras");
                     }
                 }
 
-                if (calendario.after(9) && (calendario.before(15))){
-                    reservarAlmuerzoLetras.setVisibility(View.VISIBLE);
-                    reservarAlmuerzoLetras.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-                } else if (calendario.after(18) && calendario.before(21)){
-                    reservarCenaLetras.setVisibility(View.VISIBLE);
-                    reservarCenaLetras.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
-                } else {
-                    Log.d("Dejando mensajes","Jugando con horas par reservas");
-                }
 
             }
 
