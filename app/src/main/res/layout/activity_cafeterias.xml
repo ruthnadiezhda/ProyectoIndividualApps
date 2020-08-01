@@ -44,7 +44,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/baloo"
             android:gravity="center"
-            android:text="Para actualizar los datos en tiempo real, solo refresque la pantalla. Podrá escoger la opción de pagar en caja o con tarjeta de crédito."
+            android:text="Podrá reserva su comida o escoger la opción de pagar en caja o con tarjeta de crédito."
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

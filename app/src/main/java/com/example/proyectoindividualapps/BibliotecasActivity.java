@@ -145,7 +145,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
         Log.d("A ver: ", biblioteca.child("Bibliotecas").equalTo(bibliotecaEscogida).toString());
 
         //Empiezo a buscar a que biblioteca pertenece
-        biblioteca.orderByChild("Bibliotecas").equalTo(bibliotecaEscogida).addListenerForSingleValueEvent(new ValueEventListener() {
+        biblioteca.orderByChild("Bibliotecas").equalTo(bibliotecaEscogida).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshotBiblioteca) {
 

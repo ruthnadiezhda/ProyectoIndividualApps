@@ -192,8 +192,8 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
 
 
                         if (horaparaReservarCena>=9 && horaparaReservarCena<=15) {
-                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
-                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                            reservarAlmuerzoCentral.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoCentral.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     Integer menusActuales = menucitoDeAlmuerzitoC.getCantidad() - 1;
@@ -211,8 +211,8 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         cantidadCenaCentral.setText(Integer.toString(menucitoDeCenitaC.getCantidad()));
 
                         if (horaparaReservarCena>=18 && horaparaReservarCena<=21) {
-                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
-                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                            reservarCenaCentral.setVisibility(View.VISIBLE);
+                            reservarCenaCentral.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     Integer menusActuales = menucitoDeCenitaC.getCantidad() - 1;
@@ -248,8 +248,8 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         cantidadAlmuerzoLetras.setText(Integer.toString(menucitoDeAlmuerzitoL.getCantidad()));
 
                         if (horaparaReservarCena>=9 && horaparaReservarCena<=15) {
-                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
-                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                            reservarAlmuerzoLetras.setVisibility(View.VISIBLE);
+                            reservarAlmuerzoLetras.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     Integer menusActuales = menucitoDeAlmuerzitoL.getCantidad() - 1;
@@ -267,8 +267,8 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         cantidadCenaLetras.setText(Integer.toString(menucitoDeCenitaL.getCantidad()));
 
                         if (horaparaReservarCena>=18 && horaparaReservarCena<=21) {
-                            reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
-                            reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                            reservarCenaLetras.setVisibility(View.VISIBLE);
+                            reservarCenaLetras.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     Integer menusActuales = menucitoDeCenitaL.getCantidad() - 1;
