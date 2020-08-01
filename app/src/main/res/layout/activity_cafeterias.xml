@@ -27,18 +27,539 @@
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginStart="174dp"
-            android:layout_marginLeft="174dp"
-            android:layout_marginTop="326dp"
-            android:layout_marginEnd="160dp"
-            android:layout_marginRight="160dp"
-            android:layout_marginBottom="384dp"
-            android:text="Cafeterias"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="Cafeterias PUCP"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="Para actualizar los datos en tiempo real, solo refresque la pantalla. Podrá escoger la opción de pagar en caja o con tarjeta de crédito."
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreAlmuerzoArtes"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloArtesA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor de Artes - Almuerzo"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloArtesA"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreAlmuerzoArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuArtes"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadAlmuerzoArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadArtes"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarArtesAlmuerzo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreAlmuerzoCentral"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloCentralA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor Central - Almuerzo"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloCentralA"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreAlmuerzoCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuCentral"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadAlmuerzoCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadCentral"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarCentralAlmuerzo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreAlmuerzoLetras"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloLetrasA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor de Letras - Almuerzo"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloLetrasA"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreAlmuerzoLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuLetras"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadAlmuerzoLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadLetras"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarLetrasAlmuerzo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadArtesCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreCenaArtes"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloArtesCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor de Artes - Cena"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuArtesCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloArtesCena"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreCenaArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuArtesCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadCenaArtes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadArtesCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarArtesCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadCentralCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreCenaCentral"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloCentralCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor Central - Cena"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuCentralCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloCentralCena"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreCenaCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuCentralCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadCenaCentral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadCentralCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarCentralCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/cantidadLetrasCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/nombreCenaLetras"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Cantidad Disponibles: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tituloLetrasCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Comedor de Letras - Cena"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/menuLetrasCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tituloLetrasCena"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="Menu: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/nombreCenaLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/menuLetrasCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/cantidadCenaLetras"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cantidadLetrasCena"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="TextView" />
+
+                        <Button
+                            android:id="@+id/reservarLetrasCena"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:text="Reservar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
