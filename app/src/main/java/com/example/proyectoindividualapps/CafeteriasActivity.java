@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class CafeteriasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Variables
@@ -85,11 +88,20 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         cantidadCenaLetras = findViewById(R.id.cantidadCenaLetras);
 
         reservarAlmuerzoArtes = findViewById(R.id.reservarArtesAlmuerzo);
+        reservarAlmuerzoArtes.setVisibility(View.GONE);
         reservarAlmuerzoCentral = findViewById(R.id.reservarCentralAlmuerzo);
+        reservarAlmuerzoCentral.setVisibility(View.GONE);
         reservarAlmuerzoLetras = findViewById(R.id.reservarLetrasAlmuerzo);
+        reservarAlmuerzoLetras.setVisibility(View.GONE);
         reservarCenaArtes = findViewById(R.id.reservarArtesCena);
+        reservarCenaArtes.setVisibility(View.GONE);
         reservarCenaCentral = findViewById(R.id.reservarCentralCena);
+        reservarCenaCentral.setVisibility(View.GONE);
         reservarCenaLetras = findViewById(R.id.reservarLetrasCena);
+        reservarCenaLetras.setVisibility(View.GONE);
+
+        final Calendar calendario = new GregorianCalendar();
+        Integer horaparaReservarCena = calendario.get(Calendar.HOUR_OF_DAY);
 
 
         //Referencia a la incidencia
@@ -124,20 +136,26 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                     }
                 }
 
-                reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                if (calendario.after(9) && (calendario.before(15))){
+                    reservarAlmuerzoArtes.setVisibility(View.VISIBLE);
+                    reservarAlmuerzoArtes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                    }
-                });
+                        }
+                    });
+                } else if (calendario.after(18) && calendario.before(21)){
+                    reservarCenaArtes.setVisibility(View.VISIBLE);
+                    reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                reservarCenaArtes.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                        }
+                    });
 
-                    }
-                });
-
+                } else {
+                    Log.d("Dejando mensajes","Jugando con horas par reservas");
+                }
             }
 
             @Override
@@ -170,6 +188,27 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         Log.d("Nada 5", "Nadita en Central");
                     }
                 }
+
+                if (calendario.after(9) && (calendario.before(15))){
+                    reservarAlmuerzoCentral.setVisibility(View.VISIBLE);
+                    reservarAlmuerzoCentral.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                } else if (calendario.after(18) && calendario.before(21)){
+                    reservarCenaCentral.setVisibility(View.VISIBLE);
+                    reservarCenaCentral.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+                } else {
+                    Log.d("Dejando mensajes","Jugando con horas par reservas");
+                }
             }
 
             @Override
@@ -200,6 +239,28 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                         Log.d("Nada 6", "Nadita en Letras");
                     }
                 }
+
+                if (calendario.after(9) && (calendario.before(15))){
+                    reservarAlmuerzoLetras.setVisibility(View.VISIBLE);
+                    reservarAlmuerzoLetras.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                } else if (calendario.after(18) && calendario.before(21)){
+                    reservarCenaLetras.setVisibility(View.VISIBLE);
+                    reservarCenaLetras.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+                } else {
+                    Log.d("Dejando mensajes","Jugando con horas par reservas");
+                }
+
             }
 
             @Override
