@@ -37,6 +37,7 @@ import java.util.GregorianCalendar;
 public class CafeteriasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Variables
+    FirebaseAuth firebaseAuth;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -345,7 +346,7 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
     public void desplegarMedioDePago(){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("Escoga su medio de pago:");
-        alertDialog.setMessage("Si escoge Caja debe acercarse en un plazo maximo de media hora, sino su plato sera quitado de su cuenta como reservado. Si elige tarjeta, sera redirigido a una pagina para realizar el pago");
+        alertDialog.setMessage("Si escoge Caja debe acercarse en un plazo maximo de media hora. Si elige tarjeta, sera redirigido a una pagina para realizar el pago");
         alertDialog.setPositiveButton("Caja",
                 new DialogInterface.OnClickListener() {
                     @Override
