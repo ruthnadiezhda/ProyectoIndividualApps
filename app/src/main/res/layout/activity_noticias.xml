@@ -95,6 +95,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/baloo"
             android:text="E V E N T O S"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewNoticias" />
