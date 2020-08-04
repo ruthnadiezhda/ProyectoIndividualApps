@@ -100,8 +100,7 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void recyclerViewNoticias() {
-        recyclerViewNoticias.setHasFixedSize(true);
-        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
 
         final DatabaseReference databaseReferenceNoticias = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Noticias");
 
@@ -128,7 +127,7 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
 
                 noticiasAdapter =new NoticiasAdapter(noticiasArrayList,NoticiasActivity.this);
                 recyclerViewNoticias.setHasFixedSize(true);
-                recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(NoticiasActivity.this));
+                recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(NoticiasActivity.this,LinearLayoutManager.HORIZONTAL,true));
                 recyclerViewNoticias.setAdapter(noticiasAdapter);
 
             }
