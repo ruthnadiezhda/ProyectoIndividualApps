@@ -59,18 +59,18 @@ public class LibrosAdapter extends RecyclerView.Adapter<LibrosAdapter.LibrosView
             this.textView3 = itemView.findViewById(R.id.areaBiblioteca);
             this.reservar =itemView.findViewById(R.id.reservarLibro);
 
-            reservar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(listener != null){
-                        int position = getAdapterPosition();
-                        if (position !=RecyclerView.NO_POSITION){
-                            listener.reservarClick(position);
+                reservar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(listener != null){
+                            int position = getAdapterPosition();
+                            if (position !=RecyclerView.NO_POSITION){
+                                listener.reservarClick(position);
+                            }
                         }
                     }
-                }
-            });
-        }
+                });
+            }
 
         public void asignarDatos(Libro libro) {
             textView1.setText(libro.getNombre());

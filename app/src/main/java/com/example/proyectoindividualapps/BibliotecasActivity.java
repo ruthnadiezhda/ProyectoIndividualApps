@@ -194,7 +194,6 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                                         librosBiblioteca.child(libroAReservar).child("Prestados").setValue(listaLibrosCoincidentes.get(position).getPrestados());
                                         librosBiblioteca.child(libroAReservar).child("Disponibles").setValue(listaLibrosCoincidentes.get(position).getDisponibles());
 
-
                                     }
                                 });
                             }

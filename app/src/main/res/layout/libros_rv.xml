@@ -88,6 +88,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="5dp"
                     android:text="Reservar" />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
