@@ -25,17 +25,18 @@
             android:fontFamily="@font/baloo"
             android:gravity="clip_horizontal|center"
             android:text="TextView"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/imageNoticiaRV"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@drawable/pucp" />
+        <TextView
+            android:id="@+id/introducionNoticiaRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="13sp" />
 
-            <Button
+        <Button
                 android:id="@+id/detallesNoticiasRV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

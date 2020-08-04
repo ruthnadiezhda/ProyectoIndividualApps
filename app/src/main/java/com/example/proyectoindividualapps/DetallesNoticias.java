@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,7 +42,6 @@ public class DetallesNoticias extends AppCompatActivity {
         foto = noti.getStringExtra("Foto");
         tit = noti.getStringExtra("Titulo");
 
-
         DatabaseReference noticiasRef = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Noticias");
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -71,6 +71,7 @@ public class DetallesNoticias extends AppCompatActivity {
                         autorN = keyId.child("Autor").getValue(String.class);
                         fotoN = keyId.child("Foto").getValue(String.class);
                         break;
+
                     }
                 }
 
@@ -87,6 +88,7 @@ public class DetallesNoticias extends AppCompatActivity {
         });
 
         StorageReference fotoReference =storageReference.child("fotosNoticias/"+ foto);
+        Log.d("Prueba 6: ",storageReference.child(("fotosNoticias/"+ foto)).toString());
         Glide.with(this).load(fotoReference).into(imagen);
 
     }

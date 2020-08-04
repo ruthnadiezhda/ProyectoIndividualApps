@@ -34,6 +34,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
     public static class NoticiasViewHolder extends RecyclerView.ViewHolder{
 
         public TextView titulo;
+        public TextView intro;
         public Button verMas;
         public Noticias noticias;
 
@@ -42,12 +43,14 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.Notici
             super(itemView);
 
             this.titulo=itemView.findViewById(R.id.tituloNoticiaRV);
+            this.intro = itemView.findViewById(R.id.introducionNoticiaRV);
             this.verMas = itemView.findViewById(R.id.detallesNoticiasRV);
         }
 
 
         public void asignarDatos(Noticias noti) {
             titulo.setText(noti.getTitulo());
+            intro.setText(noti.getIntroduccion());
         }
 
         public void botonDetalles(final Noticias noti) {
