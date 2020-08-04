@@ -46,4 +46,6 @@ public class Evento {
     public void setPreferencial(Integer preferencial) {
         this.preferencial = preferencial;
     }
+
+
 }

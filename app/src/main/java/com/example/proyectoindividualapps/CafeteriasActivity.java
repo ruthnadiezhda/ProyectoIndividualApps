@@ -351,7 +351,6 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        FirebaseAuth.getInstance().signOut();
                         Toast.makeText(CafeteriasActivity.this, "Tiene media hora para ir a pagar a caja", Toast.LENGTH_SHORT).show();
                     }
                 });
