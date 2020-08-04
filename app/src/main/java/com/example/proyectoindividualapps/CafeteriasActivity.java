@@ -72,6 +72,8 @@ public class CafeteriasActivity extends AppCompatActivity implements NavigationV
         drawerLayout = findViewById(R.id.drawer_layout_cafeterias);
         navigationView = findViewById(R.id.nav_view_cafeterias);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         //Navigation drawer menu
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);

@@ -38,6 +38,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    FirebaseAuth firebaseAuth;
     TextView comentarioReserva;
     LibrosAdapter librosAdapter;
     private Spinner spinner;
@@ -53,6 +54,8 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bibliotecas);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //Toolbar
         toolbar = findViewById(R.id.toolbar);
@@ -190,6 +193,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
                                         librosAdapter.notifyItemChanged(position);
                                         librosBiblioteca.child(libroAReservar).child("Prestados").setValue(listaLibrosCoincidentes.get(position).getPrestados());
                                         librosBiblioteca.child(libroAReservar).child("Disponibles").setValue(listaLibrosCoincidentes.get(position).getDisponibles());
+
 
                                     }
                                 });

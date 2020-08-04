@@ -39,6 +39,8 @@ public class DetallesEventos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalles_eventos);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         Intent eve = getIntent();
         pref = eve.getIntExtra("Preferencial",0);
         tit= eve.getStringExtra("Titulo");
