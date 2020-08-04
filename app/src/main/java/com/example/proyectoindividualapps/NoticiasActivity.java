@@ -78,8 +78,6 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void recyclerViewEventos() {
-        recyclerViewNoticias.setHasFixedSize(true);
-        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         final DatabaseReference databaseReferenceEventos = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Eventos");
 

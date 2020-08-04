@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectoindividualapps.DetallesEventos;
 import com.example.proyectoindividualapps.DetallesNoticias;
 import com.example.proyectoindividualapps.R;
 import com.example.proyectoindividualapps.entity.Evento;
@@ -63,7 +64,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventosV
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(context, DetallesNoticias.class);
+                        Intent intent = new Intent(context, DetallesEventos.class);
                         intent.putExtra("Titulo",evento.getTitulo());
                         intent.putExtra("Preferencial",evento.getPreferencial());
 

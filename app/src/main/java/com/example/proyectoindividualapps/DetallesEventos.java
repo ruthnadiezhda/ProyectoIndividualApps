@@ -80,6 +80,5 @@ public class DetallesEventos extends AppCompatActivity {
             }
         });
 
-
     }
 }
