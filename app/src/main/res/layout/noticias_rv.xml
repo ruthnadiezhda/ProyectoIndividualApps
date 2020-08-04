@@ -8,12 +8,14 @@
     app:cardCornerRadius="2dp"
     app:cardElevation="8dp">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp">
-
 
         <TextView
             android:id="@+id/tituloNoticiaRV"
@@ -23,21 +25,26 @@
             android:fontFamily="@font/baloo"
             android:gravity="clip_horizontal|center"
             android:text="TextView"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/imageNoticiaRV"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/pucp" />
+            <ImageView
+                android:id="@+id/imageNoticiaRV"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/pucp" />
 
-        <Button
-            android:id="@+id/detallesNoticiasRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Saber mas" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/detallesNoticiasRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Saber mas" />
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
 </androidx.cardview.widget.CardView>

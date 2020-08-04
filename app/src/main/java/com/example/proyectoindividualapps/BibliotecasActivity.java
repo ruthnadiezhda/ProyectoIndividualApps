@@ -85,7 +85,7 @@ public class BibliotecasActivity extends AppCompatActivity implements Navigation
 
         buscador = findViewById(R.id.buscadorBiblioteca);
         if (buscador.getText().toString().isEmpty()) {
-            buscador.setError("No deb estar vacio");
+            buscador.setError("No debe estar vacio");
         }
         botonBuscarLibro = findViewById(R.id.buscarBoton);
 
