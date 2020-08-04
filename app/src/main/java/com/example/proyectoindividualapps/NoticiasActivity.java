@@ -13,9 +13,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 
 import com.example.proyectoindividualapps.adapter.EventosAdapter;
 import com.example.proyectoindividualapps.adapter.NoticiasAdapter;
+import com.example.proyectoindividualapps.entity.Evento;
 import com.example.proyectoindividualapps.entity.Noticias;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,6 +46,7 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
     private String fechaEve;
     private String introEve;
     private String textoEve;
+    private Integer prefeEve;
     NoticiasAdapter noticiasAdapter;
     EventosAdapter eventosAdapter;
 
@@ -72,12 +75,39 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
         recyclerViewEventos = findViewById(R.id.recyclerViewEventos);
         recyclerViewEventos();
 
+    }
+
+    private void recyclerViewEventos() {
+        recyclerViewNoticias.setHasFixedSize(true);
+        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         final DatabaseReference databaseReferenceEventos = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Eventos");
+
+        final ArrayList<Evento> eventoArrayList = new ArrayList<>();
 
         databaseReferenceEventos.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot keyID : dataSnapshot.getChildren()){
+                    Evento evento = new Evento();
+                    tituloEve = keyID.getKey().toString();
+                    fechaEve = keyID.child("Fecha").getValue(String.class);
+                    introEve = keyID.child("Introduccion").getValue(String.class);
+                    textoEve = keyID.child("Texto").getValue(String.class);
+                    prefeEve = keyID.child("Preferncial").getValue(Integer.class);
+
+                    evento.setFecha(fechaEve);
+                    evento.setIntroduccion(introEve);
+                    evento.setTitulo(tituloEve);
+                    evento.setPreferencial(prefeEve);
+                    evento.setTexto(textoEve);
+                    eventoArrayList.add(evento);
+                }
+
+                eventosAdapter =new EventosAdapter(eventoArrayList,NoticiasActivity.this);
+                recyclerViewEventos.setHasFixedSize(true);
+                recyclerViewEventos.setLayoutManager(new LinearLayoutManager(NoticiasActivity.this,LinearLayoutManager.HORIZONTAL,true));
+                recyclerViewEventos.setAdapter(eventosAdapter);
 
             }
 
@@ -87,21 +117,9 @@ public class NoticiasActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
-
-
-    }
-
-    private void recyclerViewEventos() {
-        recyclerViewNoticias.setHasFixedSize(true);
-        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-
-
-
     }
 
     private void recyclerViewNoticias() {
-
-
         final DatabaseReference databaseReferenceNoticias = FirebaseDatabase.getInstance().getReference().child("Universidad").child("Noticias");
 
         databaseReferenceNoticias.addValueEventListener(new ValueEventListener() {
