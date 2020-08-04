@@ -1,10 +1,19 @@
 package com.example.proyectoindividualapps.entity;
 
 public class Evento {
+    private String titulo;
     private String introduccion;
     private String texto;
     private Integer preferencial;
     private String fecha;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
     public String getFecha() {
         return fecha;

@@ -7,6 +7,15 @@ public class Noticias {
     private String texto;
     private String autor;
     private String fotos;
+    private String titulo;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
     public Integer getId() {
         return id;
